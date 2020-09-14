@@ -20,7 +20,9 @@ class QtVirtManager < Formula
   depends_on "shared-mime-info"
   depends_on :x11
 
-
+  # Add an option to specify the destionation of the .app
+  patch :DATA
+  
   def install
     args = std_cmake_args
     args<<"-DBUILD_QT_VERSION=5"
@@ -30,6 +32,7 @@ class QtVirtManager < Formula
     args<<"-DQT5_LIB_PATH=#{Formula["qt5"].prefix}"
     args<<"-DVNC_LIB_PATH=#{Formula["libvnc"].prefix}"
     args<<"-DSPICE_LIB_PATH=#{Formula["spice-protocol"].prefix}"
+    args<<"_DAPPLE_APP_INSTALL_PREFIX=#{prefix}"
       mkdir "build" do
           system "cmake", "..", *args
           system "make", "install"
@@ -49,3 +52,16 @@ class QtVirtManager < Formula
       "built & installed."
   end
 end
+__END__
+9a10,12
+> if (NOT APPLE_APP_INSTALL_PREFIX)
+>     set (APPLE_APP_INSTALL_PREFIX /Applications)
+> endif ()
+1213c1216
+<         DESTINATION /Applications/${PROJECT_NAME}.app/Contents/Resources )
+---
+>         DESTINATION ${APPLE_APP_INSTALL_PREFIX}/${PROJECT_NAME}.app/Contents/Resources )
+1252c1255
+<             DESTINATION /Applications/${PROJECT_NAME}.app/Contents/Resources )
+---
+>             DESTINATION ${APPLE_APP_INSTALL_PREFIX}/${PROJECT_NAME}.app/Contents/Resources )
