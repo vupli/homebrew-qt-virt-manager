@@ -32,7 +32,7 @@ class QtVirtManager < Formula
     args<<"-DQT5_LIB_PATH=#{Formula["qt5"].prefix}"
     args<<"-DVNC_LIB_PATH=#{Formula["libvnc"].prefix}"
     args<<"-DSPICE_LIB_PATH=#{Formula["spice-protocol"].prefix}"
-    args<<"_DAPPLE_APP_INSTALL_PREFIX=#{prefix}"
+    args<<"-DAPPLE_APP_INSTALL_PREFIX=#{prefix}"
       mkdir "build" do
           system "cmake", "..", *args
           system "make", "install"
