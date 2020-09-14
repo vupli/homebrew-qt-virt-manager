@@ -53,8 +53,8 @@ class QtVirtManager < Formula
   end
 end
 __END__
---- CMakeLists	2020-09-14 11:50:22.000000000 +0200
-+++ CMakeLists	2020-09-14 11:54:17.000000000 +0200
+--- CMakeLists.txt	2020-09-14 11:50:22.000000000 +0200
++++ CMakeLists.txt	2020-09-14 11:54:17.000000000 +0200
 @@ -7,6 +7,9 @@
  if (NOT SHARE_INSTALL_PREFIX)
      set (SHARE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/share")
