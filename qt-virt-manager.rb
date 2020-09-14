@@ -53,15 +53,33 @@ class QtVirtManager < Formula
   end
 end
 __END__
-9a10,12
-> if (NOT APPLE_APP_INSTALL_PREFIX)
->     set (APPLE_APP_INSTALL_PREFIX /Applications)
-> endif ()
-1213c1216
-<         DESTINATION /Applications/${PROJECT_NAME}.app/Contents/Resources )
----
->         DESTINATION ${APPLE_APP_INSTALL_PREFIX}/${PROJECT_NAME}.app/Contents/Resources )
-1252c1255
-<             DESTINATION /Applications/${PROJECT_NAME}.app/Contents/Resources )
----
->             DESTINATION ${APPLE_APP_INSTALL_PREFIX}/${PROJECT_NAME}.app/Contents/Resources )
+--- CMakeLists	2020-09-14 11:50:22.000000000 +0200
++++ CMakeLists	2020-09-14 11:54:17.000000000 +0200
+@@ -7,6 +7,9 @@
+ if (NOT SHARE_INSTALL_PREFIX)
+     set (SHARE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/share")
+ endif ()
++if (NOT APPLE_APP_INSTALL_PREFIX)
++    set (APPLE_APP_INSTALL_PREFIX /Applications)
++endif ()
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+     
+@@ -1210,7 +1213,7 @@
+         DESTINATION ${SHARE_INSTALL_PREFIX}/icons/hicolor/256x256/apps )
+ else  (NOT APPLE)
+     install ( FILES src/icons/256x256/apps/virtual-engineering.png
+-        DESTINATION /Applications/${PROJECT_NAME}.app/Contents/Resources )
++        DESTINATION ${APPLE_APP_INSTALL_PREFIX}/${PROJECT_NAME}.app/Contents/Resources )
+     MESSAGE(STATUS "Copy app icon for QtVirtManaget")
+ endif (NOT APPLE)
+ 
+@@ -1249,7 +1252,7 @@
+             DESTINATION ${SHARE_INSTALL_PREFIX}/icons/hicolor/256x256/apps )
+     else  (NOT APPLE)
+         install ( FILES src/icons/256x256/apps/remote-desktop-viewer.png
+-            DESTINATION /Applications/${PROJECT_NAME}.app/Contents/Resources )
++            DESTINATION ${APPLE_APP_INSTALL_PREFIX}/${PROJECT_NAME}.app/Contents/Resources )
+         MESSAGE(STATUS "Copy app icon for Remote Viewer")
+     endif (NOT APPLE)
+ install ( FILES ${VIEWER_MIME_FILE}
