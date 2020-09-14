@@ -1,8 +1,8 @@
 class SpiceClientGlib2 < Formula
   desc "Glib2 client/common libraries for SPICE"
   homepage "http://www.spice-space.org"
-  url "https://www.spice-space.org/download/gtk/spice-gtk-0.37.tar.bz2"
-  sha256 "1f28b706472ad391cda79a93fd7b4c7a03e84b88fc46ddb35dddbe323c923bb7"
+  url "https://www.spice-space.org/download/gtk/spice-gtk-0.35.tar.bz2"
+  sha256 "b4e6073de5125e2bdecdf1fbe7c9e8c4cabe9c85518889b42f72bf63c8ab9e86"
 
   depends_on "intltool" => :build
   depends_on "libtool" => :build
@@ -19,6 +19,11 @@ class SpiceClientGlib2 < Formula
   depends_on "usbredir"
   # TODO: audio
 
+  patch do
+    url "https://raw.githubusercontent.com/g3ngr33n/emergeless/master/net-misc/spice-gtk/files/0004-demarshallers-musl.patch"
+   sha256 "85cc828a96735bdafcf29eb6291ca91bac846579bcef7308536e0c875d6c81d7"
+  end
+  
   def install
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
