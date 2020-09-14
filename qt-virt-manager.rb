@@ -53,9 +53,11 @@ class QtVirtManager < Formula
   end
 end
 __END__
---- CMakeLists.txt	2020-09-14 11:50:22.000000000 +0200
-+++ CMakeLists.txt	2020-09-14 11:54:17.000000000 +0200
-@@ -7,6 +7,9 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a18c17d2..e0d57a47 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,9 @@ endif ()
  if (NOT SHARE_INSTALL_PREFIX)
      set (SHARE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/share")
  endif ()
@@ -65,7 +67,7 @@ __END__
  
  list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
      
-@@ -1210,7 +1213,7 @@
+@@ -1210,7 +1213,7 @@ if    (NOT APPLE)
          DESTINATION ${SHARE_INSTALL_PREFIX}/icons/hicolor/256x256/apps )
  else  (NOT APPLE)
      install ( FILES src/icons/256x256/apps/virtual-engineering.png
@@ -74,7 +76,7 @@ __END__
      MESSAGE(STATUS "Copy app icon for QtVirtManaget")
  endif (NOT APPLE)
  
-@@ -1249,7 +1252,7 @@
+@@ -1249,7 +1252,7 @@ if ( WITH_VNC_SUPPORT OR WITH_SPICE_SUPPORT )
              DESTINATION ${SHARE_INSTALL_PREFIX}/icons/hicolor/256x256/apps )
      else  (NOT APPLE)
          install ( FILES src/icons/256x256/apps/remote-desktop-viewer.png
