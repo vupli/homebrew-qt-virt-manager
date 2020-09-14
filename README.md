@@ -4,12 +4,12 @@ The HomeBrew formulaes for install QtVirtManager on OS X
 
 ## How to install?
 
-    brew tap F1ash/homebrew-qt-virt-manager
+    brew tap matteosecli/homebrew-qt-virt-manager
     brew install qt-virt-manager
 
     If you have installed virt-manager, then for build and install
     qt-virt-manager try to do:
-    brew tap F1ash/homebrew-qt-virt-manager
-    brew install f1ash/qt-virt-manager/spice-protocol
+    brew tap matteosecli/homebrew-qt-virt-manager
+    brew install matteosecli/qt-virt-manager/spice-protocol
 
     * Note: it is correct for OS_X newest than Maverick.
