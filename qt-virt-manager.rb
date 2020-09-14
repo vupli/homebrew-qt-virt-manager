@@ -46,6 +46,15 @@ class QtVirtManager < Formula
     #system "#{Formula["gtk+3"].opt_bin}/gtk3-update-icon-cache", "#{HOMEBREW_PREFIX}/share/icons/hicolor"
   end
 
+  def caveats
+    <<~EOS
+      The app is installed but is not linked in /Applications. If you need to have the app there, please link it with the following command:
+      
+        ln -s #{prefix}/*.app /Applications/
+      
+    EOS
+  end
+  
   test do
     system "#{bin}/echo",
       "#{Formula["qt-virt-manager"].opt_bin}/qt-virt-manager",
