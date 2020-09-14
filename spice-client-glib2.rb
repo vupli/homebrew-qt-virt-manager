@@ -21,7 +21,7 @@ class SpiceClientGlib2 < Formula
 
   patch do
     url "https://raw.githubusercontent.com/g3ngr33n/emergeless/master/net-misc/spice-gtk/files/0004-demarshallers-musl.patch"
-   sha256 "85cc828a96735bdafcf29eb6291ca91bac846579bcef7308536e0c875d6c81d7"
+    sha256 "85cc828a96735bdafcf29eb6291ca91bac846579bcef7308536e0c875d6c81d7"
   end
   
   def install
