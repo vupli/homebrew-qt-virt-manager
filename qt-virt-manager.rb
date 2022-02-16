@@ -18,7 +18,7 @@ class QtVirtManager < Formula
   depends_on "libvnc"
   depends_on "libvirt-glib"
   depends_on "shared-mime-info"
-  depends_on :x11
+  depends_on "libx11"
 
   # Add an option to specify the destionation of the .app
   patch :DATA
